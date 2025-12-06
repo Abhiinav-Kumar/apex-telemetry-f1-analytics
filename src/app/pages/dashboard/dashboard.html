@@ -1,1 +1,51 @@
-<p>dashboard works!</p>
+<div class="dashboard-grid">
+
+  <!-- Driver Card -->
+  <div class="apx-card">
+    <h3 class="section-title">Driver</h3>
+    <p><strong>{{ driverInfo.name }}</strong> • {{ driverInfo.team }}</p>
+    <p>Car #{{ driverInfo.carNumber }} • {{ driverInfo.tyreCompound }} tyres</p>
+    <p>Lap: {{ driverInfo.currentLap }}</p>
+    <p>Session: {{ driverInfo.session }}</p>
+  </div>
+
+  <!-- Performance Metrics -->
+  <div class="apx-card">
+    <h3 class="section-title">Performance</h3>
+    <p>Speed: <span class="telemetry-value">{{ metrics.speed }} km/h</span></p>
+    <p>Gear:  <span class="telemetry-value">{{ metrics.gear }}</span></p>
+    <p>Throttle: <span class="telemetry-value">{{ metrics.throttle }}%</span></p>
+    <p>Brake: <span class="telemetry-value">{{ metrics.brake }}%</span></p>
+    <p>RPM: <span class="telemetry-value">{{ metrics.rpm }}</span></p>
+  </div>
+
+  <!-- Sectors -->
+  <div class="apx-card">
+    <h3 class="section-title">Sectors</h3>
+    <p>S1: {{ sectors.sector1 }}s</p>
+    <p>S2: {{ sectors.sector2 }}s</p>
+    <p>S3: {{ sectors.sector3 }}s</p>
+    <p>Last Lap: {{ sectors.lastLap }}s</p>
+    <p>Best Lap: {{ sectors.bestLap }}s</p>
+    <p>Δ Delta: <span class="telemetry-value">{{ sectors.delta }}</span></p>
+  </div>
+
+  <!-- Tyre Status -->
+  <div class="apx-card">
+    <h3 class="section-title">Tyres</h3>
+    <p>FL: {{ tyres.tempFL }}°C ({{ tyres.wearFL }}%)</p>
+    <p>FR: {{ tyres.tempFR }}°C ({{ tyres.wearFR }}%)</p>
+    <p>RL: {{ tyres.tempRL }}°C ({{ tyres.wearRL }}%)</p>
+    <p>RR: {{ tyres.tempRR }}°C ({{ tyres.wearRR }}%)</p>
+  </div>
+
+  <!-- Session Summary -->
+  <div class="apx-card">
+    <h3 class="section-title">Session</h3>
+    <p>Type: {{ session.sessionType }}</p>
+    <p>Remaining: {{ session.remainingTime }}</p>
+    <p>Track Temp: {{ session.trackTemp }}°C</p>
+    <p>Air Temp: {{ session.airTemp }}°C</p>
+  </div>
+
+</div>
