@@ -1,0 +1,23 @@
+/* Desktop: keep links horizontal */
+@media (min-width: 992px) {
+    .navbar-nav {
+        flex-direction: row !important;
+        gap: 1.25rem;
+    }
+}
+
+/* Mobile: stack links vertically */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column !important;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+    }
+
+    .nav-link {
+        margin-left: 0 !important;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+}

@@ -1,0 +1,14 @@
+
+.nav-link {
+  color: var(--apx-text);
+  font-size: var(--apx-font-xs);    
+}
+
+.nav-link:hover,
+.nav-link.active,
+.router-link-active {
+  color: var(--apx-red);
+  cursor: pointer;
+}
+
+

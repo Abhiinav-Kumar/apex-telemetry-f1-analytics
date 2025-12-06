@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global ApexTelemetry Theme (SCSS) */
+
+/* ROOT VARIABLES */
+:root {
+    /* BRAND COLORS */
+    --apx-black: #000000;
+    --apx-white: #ffffff;
+    --apx-red: #e10600;
+    /* Official F1 red */
+    --apx-green: #00ff4c;
+    /* Delta green */
+    --apx-yellow: #ffee00;
+    /* Warning color */
+    --apx-grey: #1b1b1b;
+    /* Default dark surface */
+    --apx-surface: #121212;
+    /* UI background */
+    --apx-border: #2a2a2a;
+
+    /* FONTS */
+    --apx-font-ui: "Inter", sans-serif;
+    --apx-font-telemetry: "Roboto Mono", monospace;
+    --apx-font-branding: "Orbitron", sans-serif;
+
+    /* SPACING */
+    --apx-pad: 1rem;
+    --apx-gap: 0.75rem;
+
+    /* BORDER RADIUS */
+    --apx-radius: 6px;
+
+    /* FONT SIZES (Modular, F1-style scale) */
+    --apx-font-xxs: 0.625rem;   /* 10px  - tiny labels */
+    --apx-font-xs:  0.75rem;    /* 12px  - small UI text */
+    --apx-font-sm:  0.875rem;   /* 14px  - base small */
+    --apx-font-md:  1rem;       /* 16px  - default UI text */
+    --apx-font-lg:  1.125rem;   /* 18px  - section headers */
+    --apx-font-xl:  1.375rem;   /* 22px  - card titles */
+    --apx-font-xxl: 1.75rem;    /* 28px  - page headers / hero */
+    --apx-font-display: 2.5rem; /* 40px  - big numeric telemetry */
+
+    /* FONT WEIGHTS */
+    --apx-weight-light:    300;
+    --apx-weight-regular:  400;
+    --apx-weight-medium:   500;
+    --apx-weight-semibold: 600;
+    --apx-weight-bold:     700;
+    --apx-weight-black:    800;
+
+    /* TELEMETRY NUMBER SPECIAL STYLING */
+    --apx-telemetry-letter-spacing: -0.5px;
+    --apx-telemetry-font-size: 1.6rem; /* overrides when needed */
+
+}
+
+/* GLOBAL RESET */
+body {
+    margin: 0;
+    font-family: var(--apx-font-ui);
+    background-color: var(--apx-surface);
+    color: var(--apx-white);
+}
+
+/* NAVBAR */
+.apx-navbar {
+    background: var(--apx-black);
+    color: var(--apx-white);
+    padding: var(--apx-pad);
+    border-bottom: 1px solid var(--apx-border);
+    font-family: var(--apx-font-branding);
+    letter-spacing: 1px;
+    min-height: 4rem;
+}
+
+.branding {
+    font-family: var(--apx-font-branding);
+    color: var(--apx-white);
+}
+
+/* TELEMETRY NUMBER STYLE */
+.telemetry-number {
+    font-family: var(--apx-font-telemetry);
+    color: var(--apx-green);
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+}
+
+/* CARDS */
+.apx-card {
+    background: var(--apx-grey);
+    padding: var(--apx-pad);
+    border-radius: var(--apx-radius);
+    border: 1px solid var(--apx-border);
+}
+
+/* BUTTONS */
+.apx-btn-primary {
+    background: var(--apx-red);
+    color: var(--apx-white);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--apx-radius);
+    border: none;
+    font-family: var(--apx-font-ui);
+    font-weight: 600;
+}
+
+.apx-btn-primary:hover {
+    opacity: 0.85;
+}

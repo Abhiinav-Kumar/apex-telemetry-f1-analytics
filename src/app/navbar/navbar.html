@@ -1,8 +1,45 @@
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar apx-navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="./assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      Apex Telemetry
+
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img src="assets/images/f1-logo-bg-r.png"
+           alt="F1 Logo"
+           class="apx-logo"
+           width="90" height="30" />
+      <span class="branding ms-2">ApexTelemetry</span>
     </a>
+
+    <!-- Toggler / hamburger (Bootstrap JS required) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#apxNavbarMenu"
+            aria-controls="apxNavbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible menu -->
+    <div class="collapse navbar-collapse" id="apxNavbarMenu">
+      <ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/telemetry" routerLinkActive="active">Telemetry</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/comparison" routerLinkActive="active">Lap Comparison</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/live" routerLinkActive="active">Live Stream</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/sessions" routerLinkActive="active">Sessions</a>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </nav>
