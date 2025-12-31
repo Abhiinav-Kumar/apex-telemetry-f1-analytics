@@ -1,0 +1,200 @@
+/* Container for the lights gantry */
+.f1-lights-loader {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 90dvh;
+  width: 100%;
+  z-index: 999;
+  position: absolute;
+  background-color: var(--apx-loader-bg);
+}
+
+/* Individual Light Styling */
+.light {
+  width: 10px;
+  height: 10px;
+  background-color: #383b42;
+  /* Off state (dark grey) */
+  border-radius: 50%;
+  border: 1px solid #000;
+
+  /* The animation sequence */
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+/* Mixins to visualize ON/OFF states cleanly */
+@mixin light-on {
+  background-color: var(--apx-red, #ff0000);
+  box-shadow: 0 0 15px var(--apx-red, #ff0000), 0 0 5px var(--apx-red, #ff0000) inset;
+}
+
+@mixin light-off {
+  background-color: #383b42;
+  box-shadow: none;
+}
+
+/* Light 1: ON at 0s, OFF at 5s */
+.light:nth-child(1) {
+  animation-name: light-1;
+}
+
+@keyframes light-1 {
+  0% {
+    @include light-on;
+  }
+
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}
+
+/* Light 2: ON at 1s, OFF at 5s */
+.light:nth-child(2) {
+  animation-name: light-2;
+}
+
+@keyframes light-2 {
+  0% {
+    @include light-off;
+  }
+
+  16.666% {
+    @include light-off;
+  }
+
+  /* 1s hold off */
+  16.667% {
+    @include light-on;
+  }
+
+  /* 1s Turn ON */
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}
+
+/* Light 3: ON at 2s, OFF at 5s */
+.light:nth-child(3) {
+  animation-name: light-3;
+}
+
+@keyframes light-3 {
+  0% {
+    @include light-off;
+  }
+
+  33.333% {
+    @include light-off;
+  }
+
+  /* 2s hold off */
+  33.334% {
+    @include light-on;
+  }
+
+  /* 2s Turn ON */
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}
+
+/* Light 4: ON at 3s, OFF at 5s */
+.light:nth-child(4) {
+  animation-name: light-4;
+}
+
+@keyframes light-4 {
+  0% {
+    @include light-off;
+  }
+
+  50.000% {
+    @include light-off;
+  }
+
+  /* 3s hold off */
+  50.001% {
+    @include light-on;
+  }
+
+  /* 3s Turn ON */
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}
+
+/* Light 5: ON at 4s, OFF at 5s */
+.light:nth-child(5) {
+  animation-name: light-5;
+}
+
+@keyframes light-5 {
+  0% {
+    @include light-off;
+  }
+
+  66.666% {
+    @include light-off;
+  }
+
+  /* 4s hold off */
+  66.667% {
+    @include light-on;
+  }
+
+  /* 4s Turn ON */
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}

@@ -16,6 +16,8 @@
     --apx-surface: #121212;
     /* UI background */
     --apx-border: #2a2a2a;
+    /* Loader background */
+    --apx-loader-bg: #000000a6;
 
     /* FONTS */
     --apx-font-ui: "Inter", sans-serif;
@@ -70,6 +72,9 @@ body {
     font-family: var(--apx-font-branding);
     letter-spacing: 1px;
     min-height: 4rem;
+    position: sticky;
+    top: 0;
+    z-index: 7777;
 }
 
 .branding {
@@ -106,4 +111,9 @@ body {
 
 .apx-btn-primary:hover {
     opacity: 0.85;
+}
+
+/* CONTAINER */
+.apx-container {
+    padding: var(--apx-pad);
 }

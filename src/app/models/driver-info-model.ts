@@ -9,4 +9,5 @@ export interface DriverInfo {
   number?: string;
   code?: string;
   driver_image_url?: string;
+  position?: number;
 }
