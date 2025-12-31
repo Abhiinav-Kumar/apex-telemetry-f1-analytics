@@ -29,11 +29,9 @@
 
     <div class="content-area">
 
-        @if (loading) {
-        <div class="loading-indicator">
-            <span>Loading drivers data...</span>
-        </div>
-        }
+        <!-- @if (loading) {
+        <app-loader></app-loader>
+        } -->
 
         @if (!loading && drivers.length === 0) {
         <div class="empty-state">
@@ -45,13 +43,14 @@
         <div class="driver-grid">
             @for (driver of drivers; track driver.code) {
             <div class="driver-card" [style.--team-color]="'#' + (driver.team_color || 'e10600')">
-                <img [src]="driver.driver_image_url || fallbackImage"
-                    class="driver-img" [alt]="driver.name" (error)="handleImageError($event)" />
+                <img [src]="driver.driver_image_url || fallbackImage" class="driver-img" [alt]="driver.name"
+                    (error)="handleImageError($event)" />
 
                 <div class="card-header">
                     <div class="driver-number">{{ driver.number }}</div>
                 </div>
 
+                <div class="driver-position">{{ driver.position }}</div>
                 <div class="driver-info">
                     <h2>{{ driver.name }}</h2>
                     <div class="team-tag">{{ driver.team }}</div>

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../services/services';
 import { DriverInfo } from '../../../models/driver-info-model';
+import { LoaderComponent } from '../../loader/loader.component';
 
 @Component({
     selector: 'app-drivers-list',
     standalone: true,
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule, LoaderComponent],
     templateUrl: './drivers-list.component.html',
     styleUrl: './drivers-list.component.scss'
 })
