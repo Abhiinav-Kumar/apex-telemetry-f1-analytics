@@ -22,8 +22,8 @@
             </select>
         </div>
 
-        <button class="fetch-btn" (click)="fetchDrivers()" [disabled]="loading || !gp">
-            {{ loading ? 'Loading...' : 'Load Drivers' }}
+        <button class="fetch-btn" (click)="fetchDrivers()" [disabled]="!gp">
+            Load Drivers
         </button>
     </div>
 
@@ -33,13 +33,13 @@
         <app-loader></app-loader>
         } -->
 
-        @if (!loading && drivers.length === 0) {
+        @if (drivers.length === 0) {
         <div class="empty-state">
             <p>No drivers to display. Please adjust filters and fetch data.</p>
         </div>
         }
 
-        @if (!loading && drivers.length > 0) {
+        @if (drivers.length > 0) {
         <div class="driver-grid">
             @for (driver of drivers; track driver.code) {
             <div class="driver-card" [style.--team-color]="'#' + (driver.team_color || 'e10600')">

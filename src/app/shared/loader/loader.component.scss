@@ -16,82 +16,185 @@
 .light {
   width: 10px;
   height: 10px;
-  background-color: #383b42; /* Off state (dark grey) */
+  background-color: #383b42;
+  /* Off state (dark grey) */
   border-radius: 50%;
   border: 1px solid #000;
-  
+
   /* The animation sequence */
-  animation: lights-sequence 2s infinite ease-in-out;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
-/* Stagger the animation for each light */
-.light:nth-child(1) { animation-delay: 0.0s; }
-.light:nth-child(2) { animation-delay: 0.4s; }
-.light:nth-child(3) { animation-delay: 0.8s; }
-.light:nth-child(4) { animation-delay: 1.2s; }
-.light:nth-child(5) { animation-delay: 1.6s; }
+/* Mixins to visualize ON/OFF states cleanly */
+@mixin light-on {
+  background-color: var(--apx-red, #ff0000);
+  box-shadow: 0 0 15px var(--apx-red, #ff0000), 0 0 5px var(--apx-red, #ff0000) inset;
+}
 
-@keyframes lights-sequence {
+@mixin light-off {
+  background-color: #383b42;
+  box-shadow: none;
+}
+
+/* Light 1: ON at 0s, OFF at 5s */
+.light:nth-child(1) {
+  animation-name: light-1;
+}
+
+@keyframes light-1 {
   0% {
-    background-color: #383b42;
-    box-shadow: none;
+    @include light-on;
   }
-  5%, 90% { /* Turns on quickly and stays on */
-    background-color: #ff0000;
-    box-shadow: 0 0 15px #ff0000, 0 0 5px #ff0000 inset;
+
+  83.333% {
+    @include light-on;
   }
-  95% { /* Lights out (The Drop) */
-    background-color: #383b42;
-    box-shadow: none;
+
+  /* 5s */
+  83.334% {
+    @include light-off;
   }
+
   100% {
-    background-color: #383b42;
+    @include light-off;
   }
 }
 
-// .tyre-loader {
-//   width: 60px;
-//   height: 60px;
-//   border-radius: 50%;
-//   background: #1a1a1a; /* Rubber color */
-//   position: relative;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-//   animation: spin 0.8s linear infinite;
-// }
+/* Light 2: ON at 1s, OFF at 5s */
+.light:nth-child(2) {
+  animation-name: light-2;
+}
 
-// /* The colored sidewall stripe */
-// .tyre-loader::before {
-//   content: '';
-//   position: absolute;
-//   top: 5px;
-//   left: 5px;
-//   right: 5px;
-//   bottom: 5px;
-//   border-radius: 50%;
-//   border: 3px solid transparent;
-//   border-top-color: #ff2400; /* Soft (Red) */
-//   animation: compound-switch 3s steps(1) infinite;
-// }
+@keyframes light-2 {
+  0% {
+    @include light-off;
+  }
 
-// /* The Wheel Rim (Inner Silver part) */
-// .tyre-rim {
-//   width: 30px;
-//   height: 30px;
-//   border-radius: 50%;
-//   border: 2px solid #555;
-//   background: radial-gradient(circle, #333 40%, #000 100%);
-// }
+  16.666% {
+    @include light-off;
+  }
 
-// @keyframes spin {
-//   100% { transform: rotate(360deg); }
-// }
+  /* 1s hold off */
+  16.667% {
+    @include light-on;
+  }
 
-// /* Changes the tyre stripe color every second */
-// @keyframes compound-switch {
-//   0%   { border-top-color: #ff2400; } /* Soft */
-//   33%  { border-top-color: #ffd700; } /* Medium */
-//   66%  { border-top-color: #ffffff; } /* Hard */
-// }
+  /* 1s Turn ON */
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}
+
+/* Light 3: ON at 2s, OFF at 5s */
+.light:nth-child(3) {
+  animation-name: light-3;
+}
+
+@keyframes light-3 {
+  0% {
+    @include light-off;
+  }
+
+  33.333% {
+    @include light-off;
+  }
+
+  /* 2s hold off */
+  33.334% {
+    @include light-on;
+  }
+
+  /* 2s Turn ON */
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}
+
+/* Light 4: ON at 3s, OFF at 5s */
+.light:nth-child(4) {
+  animation-name: light-4;
+}
+
+@keyframes light-4 {
+  0% {
+    @include light-off;
+  }
+
+  50.000% {
+    @include light-off;
+  }
+
+  /* 3s hold off */
+  50.001% {
+    @include light-on;
+  }
+
+  /* 3s Turn ON */
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}
+
+/* Light 5: ON at 4s, OFF at 5s */
+.light:nth-child(5) {
+  animation-name: light-5;
+}
+
+@keyframes light-5 {
+  0% {
+    @include light-off;
+  }
+
+  66.666% {
+    @include light-off;
+  }
+
+  /* 4s hold off */
+  66.667% {
+    @include light-on;
+  }
+
+  /* 4s Turn ON */
+  83.333% {
+    @include light-on;
+  }
+
+  /* 5s */
+  83.334% {
+    @include light-off;
+  }
+
+  100% {
+    @include light-off;
+  }
+}
