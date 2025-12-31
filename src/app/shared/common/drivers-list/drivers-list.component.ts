@@ -17,12 +17,11 @@ export class DriversListComponent {
     sessionType: string = 'R'; // Default to Race
     drivers: DriverInfo[] = [];
     loading: boolean = false;
-    fallbackImage = 'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png.transform/1col/image.png'; // Using provided url as fallback style for now or generic
+    fallbackImage = 'assets/images/f1-logo-bg-r.png'; // Using provided url as fallback style for now or generic
 
     constructor(
         private apiService: ApiService,
-        private cdr: ChangeDetectorRef) 
-    { }
+        private cdr: ChangeDetectorRef) { }
 
     fetchDrivers() {
         this.loading = true;

@@ -1,157 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700;900&display=swap');
+
+:host {
+    --bg-dark: #0b0d10;
+    --card-bg: #15171e;
+    --text-main: #ffffff;
+    --text-muted: #8a8d91;
+    display: block;
+    font-family: 'Titillium Web', sans-serif;
+    color: var(--text-main);
+}
+
 .drivers-list-component {
-  background-color: #1a1a1a;
-  color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  font-family: 'Titillium Web', sans-serif; // Assuming project uses F1 font or fallback
 
-  .filters-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: flex-end;
-    margin-bottom: 30px;
-    background: #2b2b2b;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #333;
+    // Filters section styling
+    .filters-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: flex-end;
+        margin-bottom: 30px;
+        background: #2b2b2b;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #333;
 
-    .filter-item {
-      display: flex;
-      flex-direction: column;
-      
-      label {
-        font-size: 12px;
-        color: #aaaaaa;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
+        .filter-item {
+            display: flex;
+            flex-direction: column;
 
-      input, select {
-        padding: 10px;
-        background: #121212;
-        border: 1px solid #444;
-        color: #fff;
-        border-radius: 4px;
-        min-width: 120px;
-        font-size: 14px;
+            label {
+                font-size: 12px;
+                color: #aaaaaa;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
 
-        &:focus {
-          outline: none;
-          border-color: #e10600; // F1 Red
+            input,
+            select {
+                padding: 10px;
+                background: #121212;
+                border: 1px solid #444;
+                color: #fff;
+                border-radius: 4px;
+                min-width: 120px;
+                font-size: 14px;
+
+                &:focus {
+                    outline: none;
+                    border-color: #e10600; // F1 Red
+                }
+            }
         }
-      }
+
+        .fetch-btn {
+            background-color: #e10600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            height: 42px; // Match input height roughly
+
+            &:hover {
+                background-color: #cc0500;
+            }
+
+            &:disabled {
+                background-color: #555;
+                cursor: not-allowed;
+            }
+        }
     }
 
-    .fetch-btn {
-      background-color: #e10600;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-weight: bold;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      height: 42px; // Match input height roughly
-
-      &:hover {
-        background-color: #cc0500;
-      }
-
-      &:disabled {
-        background-color: #555;
-        cursor: not-allowed;
-      }
+    // New Grid Layout
+    .driver-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+        padding-top: 40px;
+        /* Space for image overlap */
     }
-  }
 
-  .drivers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-
+    // New Card Component
     .driver-card {
-      background: #2b2b2b;
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      gap: 15px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid #333;
+        background: var(--card-bg);
+        border-radius: 16px;
+        position: relative;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+        overflow: visible;
+        /* Allows image to pop out */
+        cursor: pointer;
 
-      &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        border-color: #555;
-      }
+        // Default team color fallback
+        --team-color: #e10600;
 
-      .card-image {
-        flex-shrink: 0;
-        width: 93px;
-        height: 93px;
-        border-radius: 6px;
-        overflow: hidden;
-        background: #1a1a1a;
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px var(--team-color);
+            border-color: var(--team-color);
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-      }
-
-      .card-details {
-        flex-grow: 1;
-        overflow: hidden;
-
-        .driver-name {
-          margin: 0 0 5px 0;
-          font-size: 18px;
-          font-weight: bold;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+            .driver-img {
+                transform: scale(1.1) translateY(-5px);
+            }
         }
 
-        .team-name {
-          margin: 0 0 10px 0;
-          font-size: 14px;
-          color: #bbb;
+        .driver-img {
+            position: absolute;
+            top: -40px;
+            right: 10px;
+            height: 140px;
+            z-index: 2;
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.5));
+            transition: transform 0.3s ease;
         }
 
-        .meta-info {
-          display: flex;
-          gap: 10px;
-          font-size: 12px;
-          font-weight: bold;
-          color: #eee;
-
-          .number {
-            padding: 2px 6px;
-            border-radius: 3px;
-          }
-
-          .code {
-            background: #444;
-            padding: 2px 6px;
-            border-radius: 3px;
-          }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            /* Space for image */
         }
-      }
+
+        .driver-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--team-color);
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        .driver-info {
+            h2 {
+                font-size: 1.5rem;
+                margin: 0;
+                line-height: 1.1;
+                text-transform: uppercase;
+
+                span {
+                    display: block;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    color: var(--text-muted);
+                }
+            }
+        }
+
+        .team-tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--team-color);
+            border-left: 3px solid var(--team-color);
+            padding-left: 8px;
+        }
+
+        .driver-code {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: 0;
+        }
     }
-  }
 
-  .loading-indicator, .empty-state {
-    text-align: center;
-    padding: 40px;
-    color: #888;
-    background: #222;
-    border-radius: 8px;
-    font-size: 16px;
-  }
+    .loading-indicator,
+    .empty-state {
+        text-align: center;
+        padding: 40px;
+        color: #888;
+        background: #222;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
 }

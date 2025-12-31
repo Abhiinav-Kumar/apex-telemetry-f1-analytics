@@ -42,28 +42,24 @@
         }
 
         @if (!loading && drivers.length > 0) {
-        <div class="drivers-grid">
+        <div class="driver-grid">
             @for (driver of drivers; track driver.code) {
-            <div class="driver-card">
-                <div class="card-image">
-                    <img [src]="driver.driver_image_url || 'https://placehold.co/93x93?text=Driver'" [alt]="driver.name"
-                        (error)="handleImageError($event)" />
+            <div class="driver-card" [style.--team-color]="'#' + (driver.team_color || 'e10600')">
+                <img [src]="driver.driver_image_url || fallbackImage"
+                    class="driver-img" [alt]="driver.name" (error)="handleImageError($event)" />
+
+                <div class="card-header">
+                    <div class="driver-number">{{ driver.number }}</div>
                 </div>
 
-                <div class="card-details">
-                    <h3 class="driver-name">{{ driver.name }}</h3>
-                    <p class="team-name">{{ driver.team }}</p>
-
-                    <div class="meta-info">
-                        @if (driver.number) {
-                        <span class="number" [ngStyle]="{ backgroundColor: '#' + driver.team_color }">#{{ driver.number
-                            }}</span>
-                        }
-                        @if (driver.code) {
-                        <span class="code">{{ driver.code }}</span>
-                        }
-                    </div>
+                <div class="driver-info">
+                    <h2>{{ driver.name }}</h2>
+                    <div class="team-tag">{{ driver.team }}</div>
                 </div>
+
+                @if (driver.code) {
+                <div class="driver-code">{{ driver.code }}</div>
+                }
             </div>
             }
         </div>
