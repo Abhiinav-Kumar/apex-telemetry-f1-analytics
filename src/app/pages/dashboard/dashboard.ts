@@ -4,10 +4,11 @@ import { PerformanceMetrics } from '../../models/performance-metrics-model';
 import { SectorTimes } from '../../models/sector-time-model';
 import { TyreStatus } from '../../models/tyre-status-model';
 import { SessionSummary } from '../../models/session-summary-model';
+import { DriversListComponent } from "../../shared/common/drivers-list/drivers-list.component";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [DriversListComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

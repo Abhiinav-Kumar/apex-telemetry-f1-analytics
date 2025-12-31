@@ -1,0 +1,70 @@
+<div class="drivers-list-component">
+    <div class="filters-container">
+        <div class="filter-item">
+            <label for="year-input">Year</label>
+            <input type="number" id="year-input" [(ngModel)]="year" placeholder="Year">
+        </div>
+
+        <div class="filter-item">
+            <label for="gp-input">Grand Prix</label>
+            <input type="text" id="gp-input" [(ngModel)]="gp" placeholder="e.g. Bahrain">
+        </div>
+
+        <div class="filter-item">
+            <label for="session-select">Session</label>
+            <select id="session-select" [(ngModel)]="sessionType">
+                <option value="R">Race</option>
+                <option value="Q">Qualifying</option>
+                <option value="S">Sprint</option>
+                <option value="FP1">FP1</option>
+                <option value="FP2">FP2</option>
+                <option value="FP3">FP3</option>
+            </select>
+        </div>
+
+        <button class="fetch-btn" (click)="fetchDrivers()" [disabled]="loading || !gp">
+            {{ loading ? 'Loading...' : 'Load Drivers' }}
+        </button>
+    </div>
+
+    <div class="content-area">
+
+        @if (loading) {
+        <div class="loading-indicator">
+            <span>Loading drivers data...</span>
+        </div>
+        }
+
+        @if (!loading && drivers.length === 0) {
+        <div class="empty-state">
+            <p>No drivers to display. Please adjust filters and fetch data.</p>
+        </div>
+        }
+
+        @if (!loading && drivers.length > 0) {
+        <div class="driver-grid">
+            @for (driver of drivers; track driver.code) {
+            <div class="driver-card" [style.--team-color]="'#' + (driver.team_color || 'e10600')">
+                <img [src]="driver.driver_image_url || fallbackImage"
+                    class="driver-img" [alt]="driver.name" (error)="handleImageError($event)" />
+
+                <div class="card-header">
+                    <div class="driver-number">{{ driver.number }}</div>
+                </div>
+
+                <div class="driver-info">
+                    <h2>{{ driver.name }}</h2>
+                    <div class="team-tag">{{ driver.team }}</div>
+                </div>
+
+                @if (driver.code) {
+                <div class="driver-code">{{ driver.code }}</div>
+                }
+            </div>
+            }
+        </div>
+        }
+
+    </div>
+
+</div>
