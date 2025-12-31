@@ -1,0 +1,157 @@
+.drivers-list-component {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: 'Titillium Web', sans-serif; // Assuming project uses F1 font or fallback
+
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 30px;
+    background: #2b2b2b;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+
+    .filter-item {
+      display: flex;
+      flex-direction: column;
+      
+      label {
+        font-size: 12px;
+        color: #aaaaaa;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      input, select {
+        padding: 10px;
+        background: #121212;
+        border: 1px solid #444;
+        color: #fff;
+        border-radius: 4px;
+        min-width: 120px;
+        font-size: 14px;
+
+        &:focus {
+          outline: none;
+          border-color: #e10600; // F1 Red
+        }
+      }
+    }
+
+    .fetch-btn {
+      background-color: #e10600;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      height: 42px; // Match input height roughly
+
+      &:hover {
+        background-color: #cc0500;
+      }
+
+      &:disabled {
+        background-color: #555;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .drivers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+
+    .driver-card {
+      background: #2b2b2b;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      gap: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #333;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        border-color: #555;
+      }
+
+      .card-image {
+        flex-shrink: 0;
+        width: 93px;
+        height: 93px;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #1a1a1a;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
+
+      .card-details {
+        flex-grow: 1;
+        overflow: hidden;
+
+        .driver-name {
+          margin: 0 0 5px 0;
+          font-size: 18px;
+          font-weight: bold;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .team-name {
+          margin: 0 0 10px 0;
+          font-size: 14px;
+          color: #bbb;
+        }
+
+        .meta-info {
+          display: flex;
+          gap: 10px;
+          font-size: 12px;
+          font-weight: bold;
+          color: #eee;
+
+          .number {
+            padding: 2px 6px;
+            border-radius: 3px;
+          }
+
+          .code {
+            background: #444;
+            padding: 2px 6px;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  .loading-indicator, .empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    background: #222;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+}
