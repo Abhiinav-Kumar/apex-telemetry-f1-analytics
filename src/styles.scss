@@ -6,6 +6,7 @@
     --apx-black: #000000;
     --apx-white: #ffffff;
     --apx-red: #e10600;
+    --apx-red-dark: #990000;
     /* Official F1 red */
     --apx-green: #00ff4c;
     /* Delta green */
@@ -16,8 +17,11 @@
     --apx-surface: #121212;
     /* UI background */
     --apx-border: #2a2a2a;
-    /* Loader background */
-    --apx-loader-bg: #000000a6;
+    // loader background-color
+    --apx-loader-bg: #1212126f;
+    // light border color
+    --apx-light-border:#2a2e35;
+
 
     /* FONTS */
     --apx-font-ui: "Inter", sans-serif;
@@ -28,30 +32,59 @@
     --apx-pad: 1rem;
     --apx-gap: 0.75rem;
 
+    /* SPACING SCALE */
+    --apx-spacing-xs: 0.25rem;
+    /* 4px */
+    --apx-spacing-sm: 0.5rem;
+    /* 8px */
+    --apx-spacing-md: 0.75rem;
+    /* 12px (same as gap) */
+    --apx-spacing-lg: 1.25rem;
+    /* 20px */
+    --apx-spacing-xl: 1.5rem;
+    /* 24px */
+
     /* BORDER RADIUS */
     --apx-radius: 6px;
 
+    // Navbar height
+    --navbar-height:4rem;
+
+
+    // next race card style
+    --f1-card-bg: #1f1f27;
+    --apx-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
     /* FONT SIZES (Modular, F1-style scale) */
-    --apx-font-xxs: 0.625rem;   /* 10px  - tiny labels */
-    --apx-font-xs:  0.75rem;    /* 12px  - small UI text */
-    --apx-font-sm:  0.875rem;   /* 14px  - base small */
-    --apx-font-md:  1rem;       /* 16px  - default UI text */
-    --apx-font-lg:  1.125rem;   /* 18px  - section headers */
-    --apx-font-xl:  1.375rem;   /* 22px  - card titles */
-    --apx-font-xxl: 1.75rem;    /* 28px  - page headers / hero */
-    --apx-font-display: 2.5rem; /* 40px  - big numeric telemetry */
+    --apx-font-xxs: 0.625rem;
+    /* 10px  - tiny labels */
+    --apx-font-xs: 0.75rem;
+    /* 12px  - small UI text */
+    --apx-font-sm: 0.875rem;
+    /* 14px  - base small */
+    --apx-font-md: 1rem;
+    /* 16px  - default UI text */
+    --apx-font-lg: 1.125rem;
+    /* 18px  - section headers */
+    --apx-font-xl: 1.375rem;
+    /* 22px  - card titles */
+    --apx-font-xxl: 1.75rem;
+    /* 28px  - page headers / hero */
+    --apx-font-display: 2.5rem;
+    /* 40px  - big numeric telemetry */
 
     /* FONT WEIGHTS */
-    --apx-weight-light:    300;
-    --apx-weight-regular:  400;
-    --apx-weight-medium:   500;
+    --apx-weight-light: 300;
+    --apx-weight-regular: 400;
+    --apx-weight-medium: 500;
     --apx-weight-semibold: 600;
-    --apx-weight-bold:     700;
-    --apx-weight-black:    800;
+    --apx-weight-bold: 700;
+    --apx-weight-black: 800;
 
     /* TELEMETRY NUMBER SPECIAL STYLING */
     --apx-telemetry-letter-spacing: -0.5px;
-    --apx-telemetry-font-size: 1.6rem; /* overrides when needed */
+    --apx-telemetry-font-size: 1.6rem;
+    /* overrides when needed */
 
 }
 
@@ -71,10 +104,7 @@ body {
     border-bottom: 1px solid var(--apx-border);
     font-family: var(--apx-font-branding);
     letter-spacing: 1px;
-    min-height: 4rem;
-    position: sticky;
-    top: 0;
-    z-index: 7777;
+    min-height: var(--navbar-height);
 }
 
 .branding {
@@ -113,7 +143,6 @@ body {
     opacity: 0.85;
 }
 
-/* CONTAINER */
 .apx-container {
     padding: var(--apx-pad);
 }
