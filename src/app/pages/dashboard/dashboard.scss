@@ -4,3 +4,107 @@
   gap: var(--apx-gap);
   padding: var(--apx-pad);
 }
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--apx-gap);
+  padding: var(--apx-pad);
+}
+
+/* --- OPTION 1: THE HERO CARD --- */
+.hero-card {
+  background: var(--f1-card-bg);
+  border: 1px solid var(--apx-border);
+  border-radius: var(--apx-radius);
+  width: 100%;
+  max-width: auto;
+  overflow: hidden;
+  box-shadow: var(--apx-shadow);
+}
+
+.hero-header {
+  background: linear-gradient(90deg, var(--apx-red), var(--apx-red-dark));
+  padding: var(--apx-spacing-md) var(--apx-spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-header span {
+  font-weight: var(--apx-weight-bold);
+  text-transform: uppercase;
+  font-size: var(--apx-font-xs);
+  letter-spacing: 1px;
+}
+
+.round-badge {
+  background: var(--apx-white);
+  color: var(--apx-red);
+  padding: 2px var(--apx-spacing-sm);
+  border-radius: 4px;
+  /* Keep small internal radius or use var(--apx-radius) if suitable, usually smaller */
+}
+
+.hero-body {
+  padding: var(--apx-spacing-xl);
+}
+
+.hero-title {
+  font-size: var(--apx-font-xxl);
+  font-weight: var(--apx-weight-black);
+  line-height: 1.1;
+  margin-bottom: var(--apx-radius);
+}
+
+.hero-location {
+  color: var(--apx-white);
+  opacity: 0.7;
+  font-size: var(--apx-font-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--apx-radius);
+}
+
+.circuit-row {
+  margin-top: var(--apx-spacing-lg);
+  padding-top: var(--apx-spacing-lg);
+  border-top: 1px solid var(--apx-border);
+  font-size: var(--apx-font-sm);
+  color: var(--apx-white);
+  opacity: 0.7;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: var(--apx-spacing-lg);
+  background: var(--apx-grey);
+  border-radius: var(--apx-radius);
+  padding: var(--apx-pad);
+}
+
+.time-box {
+  text-align: center;
+}
+
+.time-box:first-child {
+  border-right: 1px solid var(--apx-border);
+}
+
+.label {
+  font-size: var(--apx-font-xxs);
+  color: var(--apx-white);
+  opacity: 0.6;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--apx-spacing-xs);
+}
+
+.value {
+  font-size: var(--apx-font-xl);
+  font-weight: var(--apx-weight-bold);
+}
+
+.value.red {
+  color: var(--apx-red);
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../services/services';
 import { DriverInfo } from '../../../models/driver-info-model';
+import { EventSummary } from '../../../models/event-summary-model';
 
 
 @Component({
@@ -19,9 +20,17 @@ export class DriversListComponent {
     drivers: DriverInfo[] = [];
     fallbackImage = 'assets/images/f1-logo-bg-r.png'; // Using provided url as fallback style for now or generic
 
+    public events: EventSummary[] = [];
+
+
     constructor(
         private apiService: ApiService,
         private cdr: ChangeDetectorRef) { }
+
+
+    ngOnInit(): void {
+        this.fetchEventsByYear();
+    }
 
     fetchDrivers() {
         this.drivers = [];
@@ -39,5 +48,17 @@ export class DriversListComponent {
 
     handleImageError(event: any) {
         event.target.src = 'https://placehold.co/93x93?text=No+Image';
+    }
+
+    fetchEventsByYear() {
+        this.apiService.getEventsByYear(this.year)
+            .subscribe({
+                next: (data: EventSummary[]) => {
+                    this.events = [...data];
+                },
+                error: (error) => {
+                    console.error('Error fetching drivers:', error);
+                }
+            });
     }
 }

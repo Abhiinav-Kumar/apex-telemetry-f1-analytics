@@ -45,6 +45,15 @@
                 border-radius: 4px;
                 min-width: 120px;
                 font-size: 14px;
+                cursor: pointer;
+
+                /* Hide scrollbar */
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                -ms-overflow-style: none;
+                scrollbar-width: none;
 
                 &:focus {
                     outline: none;
@@ -96,7 +105,7 @@
         overflow: visible;
         /* Allows image to pop out */
         cursor: pointer;
-
+        height: 13.5rem;
         // Default team color fallback
         --team-color: #e10600;
 
@@ -124,7 +133,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 40px;
+            margin-top: 40px;
             /* Space for image */
         }
 
@@ -181,6 +190,36 @@
         padding: 40px;
         color: #888;
         font-size: 16px;
-        margin-top: 20px;
+        margin-top: 12rem;
     }
+}
+
+.driver-details {
+    margin-left: 6rem;
+}
+
+.position-box {
+    display: flex;
+    flex-direction: column;
+    width: 5rem;
+    top: 4.1rem;
+    position: absolute;
+    border-right: 2px solid var(--apx-light-border);
+    padding-right: var(--apx-spacing-sm);
+}
+
+.pos-label {
+    font-size: var(--apx-font-sm);
+    color: var(--text-muted);
+    font-weight: var(--apx-weight-bold);
+    letter-spacing: 1px;
+    margin-bottom: -5px;
+}
+
+.pos-number {
+    font-size: 4rem;
+    font-weight: var(--apx-weight-black);
+    line-height: 1;
+    color: var(--apx-white);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }

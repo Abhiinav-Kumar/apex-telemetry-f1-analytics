@@ -1,61 +1,35 @@
 import { Component } from '@angular/core';
-import { DriverInfo } from '../../models/driver-info-model';
-import { PerformanceMetrics } from '../../models/performance-metrics-model';
-import { SectorTimes } from '../../models/sector-time-model';
-import { TyreStatus } from '../../models/tyre-status-model';
-import { SessionSummary } from '../../models/session-summary-model';
-import { DriversListComponent } from "../../shared/common/drivers-list/drivers-list.component";
+import { DateDisplayPipe } from "../../shared/pipes/date-display.pipe";
+import { TimeDisplayPipe } from "../../shared/pipes/time-display.pipe";
+import { ApiService } from '../../services/services';
+import { NextGP } from '../../models/next-gp-model';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [DriversListComponent],
+  imports: [DateDisplayPipe, TimeDisplayPipe],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
-})
+})  
 export class Dashboard {
+  public nextGP: NextGP | null = null;
 
-  driverInfo: DriverInfo = {
-    name: 'Max Verstappen',
-    team: 'Red Bull Racing',
-    carNumber: 1,
-    tyreCompound: 'Soft',
-    currentLap: 12,
-    session: 'Race'
-  };
+  constructor(
+    private apiService: ApiService,
+  ) {}
 
-  metrics: PerformanceMetrics = {
-    speed: 312,
-    gear: 7,
-    throttle: 86,
-    brake: 0,
-    rpm: 11300
-  };
+  ngOnInit(): void {
+    this.loadNextGP();
+  }
 
-  sectors: SectorTimes = {
-    sector1: 29.324,
-    sector2: 34.221,
-    sector3: 27.889,
-    lastLap: 1.31,
-    bestLap: 1.29,
-    delta: +0.22
-  };
-
-  tyres: TyreStatus = {
-    tempFL: 102,
-    tempFR: 105,
-    tempRL: 98,
-    tempRR: 99,
-    wearFL: 12,
-    wearFR: 14,
-    wearRL: 8,
-    wearRR: 9
-  };
-
-  session: SessionSummary = {
-    sessionType: 'Race',
-    remainingTime: '48:12',
-    trackTemp: 39,
-    airTemp: 27
-  };
+  loadNextGP(): void {
+    this.apiService.getNextGP().subscribe({
+      next: (data) => {
+        this.nextGP = data;
+      },
+      error: (err) => {
+        console.error('Failed to load next GP', err);
+      }
+    });
+  }
 
 }

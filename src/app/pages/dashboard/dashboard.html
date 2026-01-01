@@ -1,6 +1,33 @@
-<div class="container-fluid">
-  <Span>Next RACE</Span>
+<div class="container-fluid apx-container">
+  @if (nextGP) {
+    <div class="hero-card">
+    <div class="hero-header">
+      <span>F1 {{ nextGP.season }} Season</span>
+      <span class="round-badge">R{{ nextGP.round }}</span>
+    </div>
+    <div class="hero-body">
+      <div class="hero-title">{{ nextGP.race_name }}</div>
+      <div class="hero-location">{{ nextGP.location }}</div>
+
+      <div class="circuit-row">
+        <i class="fa-solid fa-location-dot"></i> {{ nextGP.circuit }}
+      </div>
+
+      <div class="time-grid">
+        <div class="time-box">
+          <span class="label">Date</span>
+          <span class="value">{{ nextGP.date | dateDisplay }}</span>
+        </div>
+        <div class="time-box">
+          <span class="label">Time (IST)</span>
+          <span class="value red">{{ nextGP.time | timeDisplay }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
 </div>
 
 <div class="dashboard-grid">
+
 </div>

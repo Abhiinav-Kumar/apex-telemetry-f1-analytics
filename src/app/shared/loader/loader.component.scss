@@ -10,6 +10,7 @@
   z-index: 999;
   position: absolute;
   background-color: var(--apx-loader-bg);
+  top: calc(var(--navbar-height) + 0.5rem);
 }
 
 /* Individual Light Styling */
