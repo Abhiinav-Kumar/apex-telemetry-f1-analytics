@@ -1,10 +1,7 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../../services/api.services';
 import { DriverInfo } from '../../../models/driver-info-model';
-import { EventSummary } from '../../../models/event-summary-model';
-
 
 @Component({
     selector: 'app-drivers-list',
@@ -14,51 +11,15 @@ import { EventSummary } from '../../../models/event-summary-model';
     styleUrl: './drivers-list.component.scss'
 })
 export class DriversListComponent {
-    year: number = new Date().getFullYear();
-    gp: string = '';
-    sessionType: string = 'R'; // Default to Race
-    drivers: DriverInfo[] = [];
-    fallbackImage = 'assets/images/f1-logo-bg-r.png'; // Using provided url as fallback style for now or generic
+    @Input() drivers: DriverInfo[] = [];
+    fallbackImage = 'assets/images/f1-logo-bg-r.png';
+    isLoading = false;
 
-    public events: EventSummary[] = [];
-
-
-    constructor(
-        private apiService: ApiService,
-        private cdr: ChangeDetectorRef) { }
-
-
-    ngOnInit(): void {
-        this.fetchEventsByYear();
-    }
-
-    fetchDrivers() {
-        this.drivers = [];
-        this.apiService.getDriversListByYearGpSessionType(this.year, this.gp, this.sessionType)
-            .subscribe({
-                next: (data: any) => {
-                    this.drivers = [...data];
-                    this.cdr.detectChanges();
-                },
-                error: (error) => {
-                    console.error('Error fetching drivers:', error);
-                }
-            });
-    }
+    // No constructor needed if we are just receiving inputs
+    // But keeping empty one is fine or just removing it.
 
     handleImageError(event: any) {
         event.target.src = 'https://placehold.co/93x93?text=No+Image';
     }
-
-    fetchEventsByYear() {
-        this.apiService.getEventsByYear(this.year)
-            .subscribe({
-                next: (data: EventSummary[]) => {
-                    this.events = [...data];
-                },
-                error: (error) => {
-                    console.error('Error fetching drivers:', error);
-                }
-            });
-    }
 }
+
