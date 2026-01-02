@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DateDisplayPipe } from "../../shared/pipes/date-display.pipe";
 import { TimeDisplayPipe } from "../../shared/pipes/time-display.pipe";
-import { ApiService } from '../../services/services';
+import { ApiService } from '../../services/api.services';
 import { NextGP } from '../../models/next-gp-model';
 
 @Component({
@@ -9,13 +9,13 @@ import { NextGP } from '../../models/next-gp-model';
   imports: [DateDisplayPipe, TimeDisplayPipe],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
-})  
+})
 export class Dashboard {
   public nextGP: NextGP | null = null;
 
   constructor(
     private apiService: ApiService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadNextGP();

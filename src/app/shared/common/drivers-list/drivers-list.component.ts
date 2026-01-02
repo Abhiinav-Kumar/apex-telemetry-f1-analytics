@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../../services/services';
+import { ApiService } from '../../../services/api.services';
 import { DriverInfo } from '../../../models/driver-info-model';
 import { EventSummary } from '../../../models/event-summary-model';
 
