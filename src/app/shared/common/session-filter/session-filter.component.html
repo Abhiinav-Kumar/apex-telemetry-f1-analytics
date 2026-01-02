@@ -26,7 +26,17 @@
         </select>
     </div>
 
-    <button class="fetch-btn" (click)="onLoadDrivers()" [disabled]="!gp">
-        Load Drivers
+    <button class="fetch-btn" (click)="onLoadData()" [disabled]="!gp">
+        Load Data
     </button>
+
+    <div class="toggle-container">
+        <span class="toggle-label" [class.active]="viewState.viewMode() === 'drivers'">Drivers</span>
+        <label class="switch">
+            <input type="checkbox" [checked]="viewState.viewMode() === 'teams'" (change)="onViewToggle($event)">
+            <span class="slider round"></span>
+        </label>
+        <span class="toggle-label" [class.active]="viewState.viewMode() === 'teams'">Teams</span>
+    </div>
+
 </div>
