@@ -18,7 +18,7 @@
     /* UI background */
     --apx-border: #2a2a2a;
     // loader background-color
-    --apx-loader-bg: #1212126f;
+    --apx-loader-bg: #000000e8;
     // light border color
     --apx-light-border:#2a2e35;
 
@@ -105,6 +105,9 @@ body {
     font-family: var(--apx-font-branding);
     letter-spacing: 1px;
     min-height: var(--navbar-height);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }
 
 .branding {

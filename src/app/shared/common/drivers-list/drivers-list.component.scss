@@ -217,9 +217,10 @@
 }
 
 .pos-number {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: var(--apx-weight-black);
     line-height: 1;
     color: var(--apx-white);
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    font-family: var(--apx-font-telemetry);
 }
