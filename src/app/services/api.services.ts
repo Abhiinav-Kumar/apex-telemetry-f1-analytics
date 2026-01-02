@@ -15,6 +15,10 @@ export class ApiService {
         return this.http.get(`${this.baseUrl}drivers/${year}/${gp}/${session_type}`);
     }
 
+    getTeamsListByYearGp(year: string | number, gp: string) {
+        return this.http.get(`${this.baseUrl}teams/${year}/${gp}/`);
+    }
+
     getNextGP(): Observable<NextGP> {
         return this.http.get<NextGP>(`${this.baseUrl}grandprix/nextGp`);
     }
