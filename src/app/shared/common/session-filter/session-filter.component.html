@@ -1,0 +1,32 @@
+<div class="filters-container">
+    <div class="filter-item">
+        <label for="year-input">Year</label>
+        <input type="number" id="year-input" [(ngModel)]="year" (change)="fetchEventsByYear()" placeholder="Year">
+    </div>
+
+    <div class="filter-item">
+        <label for="gp-input">Grand Prix</label>
+        <select id="gp-input" [(ngModel)]="gp">
+            <option value="" disabled selected>Select Grand Prix</option>
+            @for (event of events; track event.roundNumber) {
+            <option [value]="event.country">{{ event.country }}</option>
+            }
+        </select>
+    </div>
+
+    <div class="filter-item">
+        <label for="session-select">Session</label>
+        <select id="session-select" [(ngModel)]="sessionType">
+            <option value="R">Race</option>
+            <option value="Q">Qualifying</option>
+            <option value="S">Sprint</option>
+            <option value="FP1">FP1</option>
+            <option value="FP2">FP2</option>
+            <option value="FP3">FP3</option>
+        </select>
+    </div>
+
+    <button class="fetch-btn" (click)="onLoadDrivers()" [disabled]="!gp">
+        Load Drivers
+    </button>
+</div>
