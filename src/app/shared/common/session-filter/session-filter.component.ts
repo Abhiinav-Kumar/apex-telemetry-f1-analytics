@@ -18,7 +18,7 @@ export class SessionFilterComponent implements OnInit {
     sessionType: string = 'R'; // Default to Race
     events: EventSummary[] = [];
 
-    @Output() loadDrivers = new EventEmitter<{ year: number, gp: string, session: string }>();
+    @Output() loadData = new EventEmitter<{ year: number, gp: string, session: string }>();
 
     constructor(
         private apiService: ApiService,
@@ -42,7 +42,7 @@ export class SessionFilterComponent implements OnInit {
     }
 
     onLoadData() {
-        this.loadDrivers.emit({
+        this.loadData.emit({
             year: this.year,
             gp: this.gp,
             session: this.sessionType

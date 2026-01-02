@@ -1,5 +1,5 @@
 <div class="apx-container">
-  <app-session-filter (loadDrivers)="fetchData($event)"></app-session-filter>
+  <app-session-filter (loadData)="fetchData($event)"></app-session-filter>
 
   @if (viewState.viewMode() === 'drivers') {
   <app-drivers-list [drivers]="drivers"></app-drivers-list>
