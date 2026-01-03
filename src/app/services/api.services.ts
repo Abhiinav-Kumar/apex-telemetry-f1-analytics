@@ -26,5 +26,9 @@ export class ApiService {
     getEventsByYear(year: string | number): Observable<any> {
         return this.http.get<any>(`${this.baseUrl}grandprix/eventsByYear/${year}`);
     }
+
+    getSessions(year: string | number, eventName: string): Observable<any> {
+        return this.http.get<any>(`${this.baseUrl}grandprix/sessions/${year}/${eventName}`);
+    }
 }
 

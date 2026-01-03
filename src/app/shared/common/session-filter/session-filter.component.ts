@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../services/api.services';
 import { EventSummary } from '../../../models/event-summary-model';
 import { ViewStateService } from '../../../services/view-state.service';
+import { Session, SessionResponse } from '../../../models/session-model';
 
 @Component({
     selector: 'app-session-filter',
@@ -15,8 +16,9 @@ import { ViewStateService } from '../../../services/view-state.service';
 export class SessionFilterComponent implements OnInit {
     year: number = new Date().getFullYear();
     gp: string = '';
-    sessionType: string = 'R'; // Default to Race
+    sessionType: string = ''; // Default to empty to show "Select Session"
     events: EventSummary[] = [];
+    sessions: Session[] = [];
 
     @Output() loadData = new EventEmitter<{ year: number, gp: string, session: string }>();
 
@@ -39,6 +41,24 @@ export class SessionFilterComponent implements OnInit {
                     console.error('Error fetching events:', error);
                 }
             });
+    }
+
+    onGpChange() {
+        if (!this.year || !this.gp) return;
+
+        this.apiService.getSessions(this.year, this.gp).subscribe({
+            next: (data: SessionResponse) => {
+                this.sessions = data.sessions;
+                // Optional: default to Race or keep current selection if valid
+                if (!this.sessions.find(s => s.session_code === this.sessionType)) {
+                    this.sessionType = ''; // Reset if invalid
+                }
+            },
+            error: (error) => {
+                console.error('Error fetching sessions:', error);
+                this.sessions = [];
+            }
+        });
     }
 
     onLoadData() {

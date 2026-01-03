@@ -15,12 +15,14 @@
                 <img [src]="driver.driver_image_url || fallbackImage" class="driver-img" [alt]="driver.name"
                     (error)="handleImageError($event)" />
 
-                <div class="position-box">
-                    <span class="pos-number">{{ driver.position }}</span>
-                    <span class="pos-label">POS</span>
-                </div>
+                @if(driver.position != 'N/A'){
+                    <div class="position-box">
+                        <span class="pos-number">{{ driver.position }}</span>
+                        <span class="pos-label">POS</span>
+                    </div>
+                }
 
-                <div class="driver-details">
+                <div class="driver-details" [ngStyle]="{ 'margin-left': driver.position != 'N/A' ? '6rem' : '0' }">
                     <div class="card-header">
                         <div class="driver-number">{{ driver.number }}</div>
                     </div>
