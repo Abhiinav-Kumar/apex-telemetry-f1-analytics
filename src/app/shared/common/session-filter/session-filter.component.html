@@ -6,10 +6,10 @@
 
     <div class="filter-item">
         <label for="gp-input">Grand Prix</label>
-        <select id="gp-input" [(ngModel)]="gp">
+        <select id="gp-input" [(ngModel)]="gp" (change)="onGpChange()">
             <option value="" disabled selected>Select Grand Prix</option>
             @for (event of events; track event.roundNumber) {
-            <option [value]="event.country">{{ event.country }}</option>
+            <option [value]="event.eventName">{{ event.eventName }}</option>
             }
         </select>
     </div>
@@ -17,16 +17,14 @@
     <div class="filter-item">
         <label for="session-select">Session</label>
         <select id="session-select" [(ngModel)]="sessionType">
-            <option value="R">Race</option>
-            <option value="Q">Qualifying</option>
-            <option value="S">Sprint</option>
-            <option value="FP1">FP1</option>
-            <option value="FP2">FP2</option>
-            <option value="FP3">FP3</option>
+            <option value="" disabled selected>Select Session</option>
+            @for (session of sessions; track session.session_index) {
+            <option [value]="session.session_code">{{ session.session_name }}</option>
+            }
         </select>
     </div>
 
-    <button class="fetch-btn" (click)="onLoadData()" [disabled]="!gp">
+    <button class="fetch-btn s-btn" (click)="onLoadData()" [disabled]="!gp">
         Load Data
     </button>
 
