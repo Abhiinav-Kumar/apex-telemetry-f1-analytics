@@ -24,7 +24,7 @@
         </select>
     </div>
 
-    <button class="fetch-btn s-btn" (click)="onLoadData()" [disabled]="!gp">
+    <button class="fetch-btn s-btn" (click)="onLoadData()" [disabled]="!gp || !sessionType">
         Load Data
     </button>
 

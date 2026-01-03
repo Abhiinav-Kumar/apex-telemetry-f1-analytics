@@ -150,4 +150,6 @@ body {
 
 .apx-container {
     padding: var(--apx-pad);
+    height: calc(100dvh - (var(--navbar-height) + var(--apx-pad)));
+    overflow: hidden;
 }

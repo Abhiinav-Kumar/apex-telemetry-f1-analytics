@@ -12,12 +12,23 @@
 
 .drivers-list-component {
 
+    height: calc(100dvh - (var(--navbar-height) + var(--apx-pad) + 160px));
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-top: 1rem;
+    /* Hide scrollbar */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
 
 
     // New Grid Layout
     .driver-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
         gap: 24px;
         padding-top: 40px;
         /* Space for image overlap */

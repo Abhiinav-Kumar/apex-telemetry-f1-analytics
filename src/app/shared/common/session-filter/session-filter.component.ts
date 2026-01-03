@@ -16,7 +16,7 @@ import { Session, SessionResponse } from '../../../models/session-model';
 export class SessionFilterComponent implements OnInit {
     year: number = new Date().getFullYear();
     gp: string = '';
-    sessionType: string = ''; // Default to empty to show "Select Session"
+    sessionType: string = ''; 
     events: EventSummary[] = [];
     sessions: Session[] = [];
 
